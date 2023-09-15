@@ -21,8 +21,13 @@ public class Server {
     private void start() throws IOException {
         System.out.println("Server start");
         serverSocket = new ServerSocket(this.PORT);
-        System.out.println("Server runs on Port" + PORT);
+        System.out.println("Server is listening on Port " + PORT);
 
+        while (true) {
+            Socket clientSocket = serverSocket.accept();
+            Thread thread = new Thread(new RequestHandler(clientSocket));
+
+        }
     }
 
     private void run() {
