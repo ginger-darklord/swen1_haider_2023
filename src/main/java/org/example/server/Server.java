@@ -1,5 +1,7 @@
 package org.example.server;
 
+import org.example.application.Game;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,29 +10,48 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    static final int PORT = 5934;
+    private int PORT = 5934;
+    private ServerSocket serverSocket;
+    private final Game game;
 
-    public static void main(String args[]) {
-        ServerSocket serverSocket = null;
-        Socket socket = null;
+    public Server(Game game) {
+        this.game = game;
+    }
 
-        System.out.println("Start server...");
-        try {
-            serverSocket = new ServerSocket(PORT);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Server error");
-        }
+    private void start() throws IOException {
+        System.out.println("Server start");
+        serverSocket = new ServerSocket(this.PORT);
+        System.out.println("Server runs on Port" + PORT);
 
+    }
+
+    private void run() {
         while (true) {
             try {
-                socket = serverSocket.accept();
-                System.out.println("Connection established");
-            }catch (IOException e) {
-                System.err.println("I/O error: " + e);
+                Socket socket = this.serverSocket.accept();
+                new Thread(()-> {
+                    try {
+                        BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        PrintStream output = new PrintStream(socket.getOutputStream());
+
+                        while (true) {
+                            String line = input.readLine();
+                            if (line == null || line.equalsIgnoreCase("quit")) {
+                                socket.close();
+                                return;
+                            }
+                            else {
+                                output.println(line);
+                                output.flush();
+                            }
+                        }
+                    } catch (IOException ex) {
+                        System.err.println("Echoserver: echo " + ex);
+                    }
+                }).start();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            //new Thread for a server
-            new ServerThread(socket).start();
         }
     }
 }
