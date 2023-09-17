@@ -12,7 +12,7 @@ import java.net.Socket;
 public class Server {
     private int PORT = 10001;
     private ServerSocket serverSocket;
-    private final Game game;
+    private Game game;
 
     public Server(Game game) {
         this.game = game;

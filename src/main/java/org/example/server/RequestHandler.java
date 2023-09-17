@@ -37,12 +37,13 @@ public class RequestHandler implements Runnable{
 
                     //parse json data using jackson//
                     ObjectMapper objectMapper = new ObjectMapper();
+                    //then send data to responseHandler
 
                 }
             } else if (method.equals("PUT")) {
-
+                //put request
             } else if (method.equals("DELETE")) {
-
+                //delete request
             }
 
         } catch (IOException e) {
