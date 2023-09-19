@@ -8,6 +8,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         Server server = new Server(new Game());
+        //server.on("/users", new UsersHandler());
+
         try {
             server.start();
         } catch (IOException e) {
