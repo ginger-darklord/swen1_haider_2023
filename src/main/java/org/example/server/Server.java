@@ -14,10 +14,6 @@ public class Server {
     private ServerSocket serverSocket;
     private Game game;
 
-    public Server(Game game) {
-        this.game = game;
-    }
-
     public void start() throws IOException {
         System.out.println("Server start");
         serverSocket = new ServerSocket(this.PORT);

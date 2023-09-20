@@ -1,6 +1,7 @@
 package org.example.server;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.server.handler.Handler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,54 +12,34 @@ import java.util.HashMap;
 //need runnable for the threads
 public class RequestHandler implements Runnable{
     private Socket clientsocket;
-    private HashMap<String, Handler> handler;
+    private HashMap<String, Handler> handlers;
     public RequestHandler(Socket clientSocket) {
         this.clientsocket = clientSocket;
-        this.handler = new HashMap<String, Handler>();
+        this.handlers = new HashMap<String, Handler>();
     }
 
     public void on(String path, Handler handler) {
-        //depends on what the request is sends me to usershandler or packagehanlder usw...
+       this.handlers.put(path, handler);
     }
 
     @Override
     public void run() {
         try {
-            //reads client request
-            Request request = null;
-            //request as parameter for the handle-method oder usershandler
+            Request request = new Request();
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));
             String requestLine = reader.readLine();
+            request.setRequest(requestLine);
 
             String[] requestParts = requestLine.split(" ");
+            //gets the method and saves it in request instance
             String method = requestParts[0];
+            request.setMethod(method);
 
-            Handler h = handler.get(requestParts[1]);
+            String path = requestParts[1];
+            request.setPath(path);
+            Handler h = handlers.get(path);
             if (h != null) {
                 h.handle(request);
-            }
-
-            if (method.equals("GET")) {
-                //database things ig?
-            } else if (method.equals("POST")) {
-                String contentType = reader.readLine();
-                if(contentType != null && contentType.startsWith("Content-Type: application/json")) {
-                    //reads json data and saves it in a Stringbuilder(sequence of characters)//
-                    StringBuilder requestBody = new StringBuilder();
-                    String line = reader.readLine();
-                    while (line != null) {
-                        requestBody.append(line);
-                    }
-
-                    //parse json data using jackson//
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    //then send data to responseHandler
-
-                }
-            } else if (method.equals("PUT")) {
-                //put request
-            } else if (method.equals("DELETE")) {
-                //delete request
             }
 
         } catch (IOException e) {
