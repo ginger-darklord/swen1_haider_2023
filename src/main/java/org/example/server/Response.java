@@ -2,6 +2,7 @@ package org.example.server;
 
 public class Response {
     private int status;
+    private String message;
     private String content;
     private String contentType;
 
@@ -25,7 +26,8 @@ public class Response {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatusCode(StatusCode statusCode) {
+        this.status = statusCode.code;
+        this.message = statusCode.message;
     }
 }

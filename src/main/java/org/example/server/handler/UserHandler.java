@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.server.Request;
 import org.example.server.Response;
+import org.example.server.StatusCode;
 
 public class UserHandler implements Handler{
     @Override
@@ -20,8 +21,7 @@ public class UserHandler implements Handler{
 
                 //parse json data using jackson//
                 ObjectMapper objectMapper = new ObjectMapper();
-                Response response = objectMapper.readValue(line , Response.class);
-
+                //Myclass myclass = objectMapper.readValue(line , Myclass.class);
             }
 
         } else if (request.getMethod().equals("GET")) {
@@ -33,6 +33,8 @@ public class UserHandler implements Handler{
             System.out.println("delete method was acknowledged");
         }
 
-        return null;
+        Response response = new Response();
+        response.setStatusCode(StatusCode.METHOD_NOT_ALLOWED);
+        return response;
     }
 }
