@@ -7,12 +7,13 @@ public class Request {
     private String content;
     private String request;
 
+    public Request(String request) {
+        this.request = request;
+    }
+    //constrcutor with string
+
     public String getRequest() {
         return request;
-    }
-
-    public void setRequest(String request) {
-        this.request = request;
     }
 
     public String getMethod() {

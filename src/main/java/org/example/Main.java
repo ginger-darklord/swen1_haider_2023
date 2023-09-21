@@ -11,7 +11,6 @@ public class Main {
 
         try {
             server.start();
-            //s.on("/users", new UsersHandler());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

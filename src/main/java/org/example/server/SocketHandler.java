@@ -1,34 +1,27 @@
 package org.example.server;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.server.handler.Handler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.HashMap;
 
-//need runnable for the threads
-public class RequestHandler implements Runnable{
-    private Socket clientsocket;
-    private HashMap<String, Handler> handlers;
-    public RequestHandler(Socket clientSocket) {
-        this.clientsocket = clientSocket;
-        this.handlers = new HashMap<String, Handler>();
+public class SocketHandler implements Runnable {
+
+    private Socket clientSocket;
+    private RequestManager requestManager;
+
+    public SocketHandler(Socket clientSocket, RequestManager requestManager) {
+        this.clientSocket = clientSocket;
+        this.requestManager = requestManager;
     }
-
-    public void on(String path, Handler handler) {
-       this.handlers.put(path, handler);
-    }
-
     @Override
     public void run() {
         try {
-            Request request = new Request();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
             String requestLine = reader.readLine();
-            request.setRequest(requestLine);
+            Request request = new Request(requestLine);
 
             String[] requestParts = requestLine.split(" ");
             //gets the method and saves it in request instance
@@ -37,7 +30,7 @@ public class RequestHandler implements Runnable{
 
             String path = requestParts[1];
             request.setPath(path);
-            Handler h = handlers.get(path);
+            Handler h = this.requestManager.getHandler(path);
             if (h != null) {
                 h.handle(request);
             }
@@ -47,4 +40,3 @@ public class RequestHandler implements Runnable{
         }
     }
 }
-

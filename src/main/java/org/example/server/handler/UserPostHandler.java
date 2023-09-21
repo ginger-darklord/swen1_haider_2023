@@ -6,7 +6,7 @@ import org.example.server.Request;
 import org.example.server.Response;
 import org.example.server.StatusCode;
 
-public class UserHandler implements Handler{
+public class UserPostHandler implements Handler{
     @Override
     public Response handle(Request request) throws JsonProcessingException {
         if(request.getMethod().equals("POST")) {
