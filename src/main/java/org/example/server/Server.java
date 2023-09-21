@@ -32,4 +32,5 @@ public class Server {
             thread.start();
         }
     }
+    //server maybe auf einen docker container starten
 }
