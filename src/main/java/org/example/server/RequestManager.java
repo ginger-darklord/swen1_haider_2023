@@ -15,7 +15,8 @@ public class RequestManager{
         this.handlers = new HashMap<String, Handler>();
     }
 
-    public void on(String path, Handler handler) {
+    public void on(String path, Handler.HttpMethod method, Handler handler) {
+
         this.handlers.put(path, handler);
     }
 

@@ -1,9 +1,7 @@
 package org.example.server;
 
 import org.example.application.Game;
-import org.example.server.handler.Handler;
-import org.example.server.handler.UserPostHandler;
-import org.example.server.handler.UsersGetHandler;
+import org.example.server.handler.*;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,13 +10,21 @@ import java.net.Socket;
 public class Server {
     private int PORT = 10001;
     private ServerSocket serverSocket;
-    private Game game;
     private RequestManager requestManager;
 
     public Server() {
         requestManager = new RequestManager();
-        requestManager.on("/users", "POST", new UserPostHandler()); //Handler.POST so i know that its user and a post
-        requestManager.on("/users", new UsersGetHandler());
+        requestManager.on("/users", Handler.HttpMethod.POST, new UserPostHandler()); //Handler.POST so i know that its user and a post
+        requestManager.on("/users", Handler.HttpMethod.GET, new UserGetHandler());
+        requestManager.on("/sessions", Handler.HttpMethod.POST, new SessionPostHandler());
+        requestManager.on("/packages", Handler.HttpMethod.POST, new PackagePostHandler());
+        requestManager.on("/cards", Handler.HttpMethod.GET, new CardGetHandler());
+        requestManager.on("/cards", Handler.HttpMethod.PUT, new CardPutHandler());
+        requestManager.on("/deck", Handler.HttpMethod.GET, new DeckGetHandler());
+        requestManager.on("/deck", Handler.HttpMethod.PUT, new CardPutHandler());
+        requestManager.on("/tradings", Handler.HttpMethod.DELETE, new TradingDeleteHandler());
+        requestManager.on("/tradings", Handler.HttpMethod.GET, new TradingGetHandler());
+        requestManager.on("/tradings", Handler.HttpMethod.POST, new TradingPostHandler());
     }
 
     public void start() throws IOException {
