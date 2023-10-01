@@ -1,4 +1,6 @@
-package org.example.server;
+package org.example.server.util;
+
+import org.example.server.StatusCode;
 
 public class Response {
     private int status;

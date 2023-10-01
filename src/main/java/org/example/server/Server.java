@@ -1,7 +1,16 @@
 package org.example.server;
 
-import org.example.application.Game;
 import org.example.server.handler.*;
+import org.example.server.handler.card.CardGetHandler;
+import org.example.server.handler.card.CardPutHandler;
+import org.example.server.handler.deck.DeckGetHandler;
+import org.example.server.handler.packages.PackagePostHandler;
+import org.example.server.handler.session.SessionPostHandler;
+import org.example.server.handler.trading.TradingDeleteHandler;
+import org.example.server.handler.trading.TradingGetHandler;
+import org.example.server.handler.trading.TradingPostHandler;
+import org.example.server.handler.user.UserGetHandler;
+import org.example.server.handler.user.UserPostHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;

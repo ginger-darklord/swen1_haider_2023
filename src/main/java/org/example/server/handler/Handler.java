@@ -1,8 +1,8 @@
 package org.example.server.handler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.example.server.Request;
-import org.example.server.Response;
+import org.example.server.util.Request;
+import org.example.server.util.Response;
 
 public interface Handler {
 

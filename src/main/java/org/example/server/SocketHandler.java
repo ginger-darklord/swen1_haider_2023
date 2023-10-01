@@ -1,10 +1,12 @@
 package org.example.server;
 
 import org.example.server.handler.Handler;
+import org.example.server.util.Request;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.Socket;
 
 public class SocketHandler implements Runnable {
@@ -28,11 +30,16 @@ public class SocketHandler implements Runnable {
             String method = requestParts[0];
             request.setMethod(method);
 
-            String path = requestParts[1];
-            request.setPath(path);
-            Handler h = this.requestManager.getHandler(path);
-            if (h != null) {
-                h.handle(request);
+            if(requestParts.length >= 2) {
+                String path = requestParts[1];
+                request.setPath(path);
+                Handler h = this.requestManager.getHandler(path);
+                if (h != null) {
+                    h.handle(request);
+                }
+            } else {
+                throw new ConnectException();
+                //System.out.checkError();
             }
 
         } catch (IOException e) {

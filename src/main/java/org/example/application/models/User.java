@@ -1,4 +1,6 @@
-package org.example.application;
+package org.example.application.models;
+
+import org.example.application.models.Card;
 
 import java.util.ArrayList;
 

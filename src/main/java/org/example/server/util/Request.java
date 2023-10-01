@@ -1,4 +1,4 @@
-package org.example.server;
+package org.example.server.util;
 
 public class Request {
     private String method;
