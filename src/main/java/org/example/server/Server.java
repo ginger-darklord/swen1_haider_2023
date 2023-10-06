@@ -47,5 +47,7 @@ public class Server {
             thread.start();
         }
     }
+
+    //need a server stop
     //server maybe auf einen docker container starten
 }

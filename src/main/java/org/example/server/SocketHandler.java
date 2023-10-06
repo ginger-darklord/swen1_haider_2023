@@ -29,12 +29,14 @@ public class SocketHandler implements Runnable {
             //gets the method and saves it in request instance
             String method = requestParts[0];
             request.setMethod(method);
+            System.out.println("Request: " + request.getRequest());
 
             if(requestParts.length >= 2) {
                 String path = requestParts[1];
                 request.setPath(path);
                 Handler h = this.requestManager.getHandler(path);
                 if (h != null) {
+                    //System.out.println("while iterator for handle function");
                     h.handle(request);
                 }
             } else {

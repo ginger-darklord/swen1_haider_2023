@@ -1,6 +1,7 @@
 package org.example.server.handler.user;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.example.application.repository.UserRepository;
 import org.example.server.StatusCode;
 import org.example.server.handler.Handler;
 import org.example.server.util.Request;
@@ -11,6 +12,7 @@ public class UserGetHandler implements Handler {
     public Response handle(Request request) throws JsonProcessingException {
         if(request.getMethod().equals("GET")) {
             //smth with a token??
+
         }
 
         Response response = new Response();

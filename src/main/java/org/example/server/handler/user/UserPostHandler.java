@@ -17,6 +17,7 @@ public class UserPostHandler implements Handler {
     @Override
     public Response handle(Request request) throws JsonProcessingException {
         if(request.getMethod().equals("POST")) {
+            System.out.println("Method: " + request.getMethod());
             String contentType = request.getRequest();
             if(contentType != null && contentType.startsWith("Content-Type: application/json")) {
                 //reads json data and saves it in a Stringbuilder(sequence of characters)//
@@ -42,6 +43,7 @@ public class UserPostHandler implements Handler {
 
                 Response response = new Response();
                 response.setStatusCode(StatusCode.OK);
+                System.out.println("Post handled well");
                 return response;
             }
 
