@@ -17,7 +17,7 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void createUser(User user) {
-
+        System.out.println("create user function");
     }
 
     @Override

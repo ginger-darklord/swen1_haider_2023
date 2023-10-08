@@ -5,9 +5,11 @@ import org.example.server.handler.Handler;
 import org.example.server.util.Request;
 import org.example.server.util.Response;
 
+import java.io.BufferedReader;
+
 public class DeckGetHandler implements Handler {
     @Override
-    public Response handle(Request request) throws JsonProcessingException {
+    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException {
         return null;
     }
 }

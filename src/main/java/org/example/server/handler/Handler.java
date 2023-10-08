@@ -4,6 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.example.server.util.Request;
 import org.example.server.util.Response;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 public interface Handler {
 
     public enum HttpMethod{
@@ -19,5 +22,5 @@ public interface Handler {
         }
 
     }
-    public Response handle(Request request) throws JsonProcessingException;
+    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException, IOException;
 }

@@ -15,11 +15,14 @@ import org.example.server.handler.user.UserPostHandler;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Server {
     private int PORT = 10001;
     private ServerSocket serverSocket;
     private RequestManager requestManager;
+    private ArrayList<Thread> clientThreads = new ArrayList<>();
+    private volatile boolean isRunning = false;
 
     public Server() {
         requestManager = new RequestManager();
@@ -36,18 +39,37 @@ public class Server {
         requestManager.on("/tradings", Handler.HttpMethod.POST, new TradingPostHandler());
     }
 
+
     public void start() throws IOException {
         System.out.println("Server start");
         serverSocket = new ServerSocket(this.PORT);
         System.out.println("Server is listening on Port " + PORT);
 
-        while (true) {
+        this.isRunning = true;
+
+        while (isRunning) {
             Socket clientSocket = serverSocket.accept();
             Thread thread = new Thread(new SocketHandler(clientSocket, requestManager));
             thread.start();
+
+            this.clientThreads.add(thread);
         }
     }
 
-    //need a server stop
+    public void stop() {
+        this.isRunning = false;
+        try {
+            if (serverSocket != null && !serverSocket.isClosed()) {
+                serverSocket.close();
+            }
+
+            for (Thread thread : clientThreads) {
+                thread.interrupt();
+                thread.join();
+            }
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     //server maybe auf einen docker container starten
 }

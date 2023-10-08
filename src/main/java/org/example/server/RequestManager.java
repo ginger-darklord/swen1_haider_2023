@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.HashMap;
 
-//need runnable for the threads
 public class RequestManager{
     private HashMap<String, Handler> handlers;
     public RequestManager() {
@@ -16,12 +15,13 @@ public class RequestManager{
     }
 
     public void on(String path, Handler.HttpMethod method, Handler handler) {
-
-        this.handlers.put(path, handler);
+        String key = path + " " + method.name();
+        this.handlers.put(key, handler);
     }
 
-    public Handler getHandler(String path) {
-        return this.handlers.get(path);
+    public Handler getHandler(String path, Handler.HttpMethod method) {
+        String key = path + " " + method.name();
+        return this.handlers.get(key);
     }
 
 }

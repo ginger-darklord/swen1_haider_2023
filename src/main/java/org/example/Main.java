@@ -11,6 +11,7 @@ public class Main {
 
         try {
             server.start();
+            server.stop();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

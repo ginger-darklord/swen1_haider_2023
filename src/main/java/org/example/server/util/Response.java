@@ -28,6 +28,10 @@ public class Response {
         return status;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
     public void setStatusCode(StatusCode statusCode) {
         this.status = statusCode.code;
         this.message = statusCode.message;
