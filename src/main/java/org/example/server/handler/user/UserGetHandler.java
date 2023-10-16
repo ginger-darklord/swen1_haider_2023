@@ -12,14 +12,20 @@ import java.io.BufferedReader;
 public class UserGetHandler implements Handler {
     @Override
     public Response handle(Request request) throws JsonProcessingException {
-        if(request.getMethod().equals("GET")) {
-            //smth with a token??
+        Response response = new Response();
 
+        if (request.getMethod().equals("GET")) {
+            System.out.println("Entering UserGetHandler");
+            if (request.getContentType().startsWith("Content-Type: ")) {
+                //ToDO getHandler
+
+                response.setStatusCode(StatusCode.OK);
+            }
+
+        } else {
+            response.setStatusCode(StatusCode.METHOD_NOT_ALLOWED);
         }
 
-        System.out.println("gethandler class");
-        Response response = new Response();
-        response.setStatusCode(StatusCode.METHOD_NOT_ALLOWED);
         return response;
     }
 }

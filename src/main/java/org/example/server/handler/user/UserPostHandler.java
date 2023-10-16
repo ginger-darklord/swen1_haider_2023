@@ -27,20 +27,16 @@ public class UserPostHandler implements Handler {
                 //parse json data using jackson//
                 ObjectMapper objectMapper = new ObjectMapper();
                 objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-                System.out.println("objectMapper created");
                 try {
                     User user = objectMapper.readValue(body , User.class); //user.class is wrong
                     UserRepository userRepository = new UserRepository(user);
-                    System.out.println("userrepository created");
                     userRepository.createUser(user);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
 
-
                 response.setStatusCode(StatusCode.OK);
             }
-
 
         } else {
             response.setStatusCode(StatusCode.METHOD_NOT_ALLOWED);
