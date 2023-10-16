@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class DeckPutHandler implements Handler {
     @Override
-    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException, IOException {
+    public Response handle(Request request) throws JsonProcessingException, IOException {
         return null;
     }
 }

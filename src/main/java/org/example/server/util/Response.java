@@ -36,4 +36,9 @@ public class Response {
         this.status = statusCode.code;
         this.message = statusCode.message;
     }
+
+    public void printResponse() {
+        System.out.println("Status-Code: " + this.getStatus());
+        System.out.println("Status-Message: " + this.getMessage());
+    }
 }

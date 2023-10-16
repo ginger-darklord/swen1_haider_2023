@@ -11,7 +11,7 @@ import java.io.BufferedReader;
 
 public class UserGetHandler implements Handler {
     @Override
-    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException {
+    public Response handle(Request request) throws JsonProcessingException {
         if(request.getMethod().equals("GET")) {
             //smth with a token??
 

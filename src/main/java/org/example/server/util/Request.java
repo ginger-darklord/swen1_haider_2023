@@ -1,12 +1,12 @@
 package org.example.server.util;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Request {
     private String method;
     private String path;
     private String contentType;
-    private String content;
     private String request;
     private String body;
     private Map<String, String> headers;
@@ -62,11 +62,14 @@ public class Request {
         this.contentType = contentType;
     }
 
-    public String getContent() {
-        return content;
+    public void parseRequest(String header) {
+        String[] headerParts = header.split("\r\n");
+
+        String firstLine = headerParts[0];
+        String[] methodPath = firstLine.split(" ");
+        this.setMethod(methodPath[0]);
+        this.setPath(methodPath[1]);
+        this.setContentType(headerParts[4]);
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
 }

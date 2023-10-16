@@ -10,7 +10,7 @@ import java.io.BufferedReader;
 
 public class SessionPostHandler implements Handler {
     @Override
-    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException {
+    public Response handle(Request request) throws JsonProcessingException {
         if(request.getMethod().equals("POST")) {
             String contentType = request.getContentType();
             if(contentType != null && contentType.startsWith("Content-Type: application/json")) {

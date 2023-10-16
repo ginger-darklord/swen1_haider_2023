@@ -22,5 +22,5 @@ public interface Handler {
         }
 
     }
-    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException, IOException;
+    public Response handle(Request request) throws JsonProcessingException, IOException;
 }

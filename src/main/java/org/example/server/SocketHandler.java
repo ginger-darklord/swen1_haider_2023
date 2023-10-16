@@ -24,44 +24,25 @@ public class SocketHandler implements Runnable {
     @Override
     public void run() {
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-            String requestLine = reader.readLine();
-            Request request = new Request(requestLine);
-
-            String[] requestParts = requestLine.split(" ");
-            //gets the method
-            String method = requestParts[0];
-            request.setMethod(method);
-            System.out.println("Request Method: " + request.getMethod());
-
-            // Parse and store headers in the request object
-            Map<String, String> headers = new HashMap<>();
-            String line;
-            while ((line = reader.readLine()) != null && !line.isEmpty()) {
-                String[] headerParts = line.split(": ");
-                if (headerParts.length == 2) {
-                    String headerName = headerParts[0];
-                    String headerValue = headerParts[1];
-                    //System.out.println("Header content: " + headerName + " " + headerValue);
-                    headers.put(headerName, headerValue);
-                }
+            InputStreamReader isr = new InputStreamReader(this.clientSocket.getInputStream());
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            while (reader.ready()) {
+                sb.append((char)reader.read());
             }
+            String[] rps = sb.toString().split("\r\n\r\n");
+            String header = rps[0];
+            String body = rps[1];
 
-            // Set the headers in the request object
-            request.setHeaders(headers);
+            //parsing path, method, usw.. of request header
+            Request request = new Request();
+            request.parseRequest(header);
+            request.setBody(body);
 
-
-            if(requestParts.length >= 2) {
-                String path = requestParts[1];
-                request.setPath(path);
-
-                Handler h = this.requestManager.getHandler(path, Handler.HttpMethod.valueOf(method));
-                if (h != null) {
-                    Response handled = h.handle(request, reader);
-                    System.out.println("Response: " + handled.getStatus());
-                }
-            } else {
-                throw new ConnectException();
+            Handler h = this.requestManager.getHandler(request.getPath(), Handler.HttpMethod.valueOf(request.getMethod()));
+            if (h != null) {
+                Response handled = h.handle(request);
+                handled.printResponse();
             }
 
         } catch (IOException e) {

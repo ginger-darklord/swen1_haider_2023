@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 
 public class DeckGetHandler implements Handler {
     @Override
-    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException {
+    public Response handle(Request request) throws JsonProcessingException {
         return null;
     }
 }

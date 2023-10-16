@@ -6,10 +6,12 @@ import org.example.server.util.Request;
 import org.example.server.util.Response;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 
 public class TradingDeleteHandler implements Handler {
+
     @Override
-    public Response handle(Request request, BufferedReader bufferedReader) throws JsonProcessingException {
+    public Response handle(Request request) throws JsonProcessingException, IOException {
         return null;
     }
 }
