@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="sooo many changes,&#10;UerpostHandler and UserRepository works now">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserGetHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" afterDir="false" />
+    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="deleted system output,">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +20,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -140,7 +143,9 @@
       <workItem from="1697121455593" duration="3270000" />
       <workItem from="1697272303044" duration="3341000" />
       <workItem from="1697460821606" duration="351000" />
-      <workItem from="1697467909017" duration="1485000" />
+      <workItem from="1697467909017" duration="2042000" />
+      <workItem from="1697903392684" duration="927000" />
+      <workItem from="1699035543020" duration="1200000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1694445381192</created>
@@ -201,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697475993730</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="deleted system output,">
+      <created>1697476724840</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697476724840</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +268,8 @@
     <MESSAGE value="new repository,&#10;added new packages so projects looks neater,&#10;added postgressql dependency, but does not connect to database&#10;implemented postHandlers a little bit" />
     <MESSAGE value="finding error" />
     <MESSAGE value="sooo many changes,&#10;UerpostHandler and UserRepository works now" />
-    <option name="LAST_COMMIT_MESSAGE" value="sooo many changes,&#10;UerpostHandler and UserRepository works now" />
+    <MESSAGE value="deleted system output," />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted system output," />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
