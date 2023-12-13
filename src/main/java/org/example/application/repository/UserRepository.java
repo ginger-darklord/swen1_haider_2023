@@ -10,15 +10,11 @@ import java.sql.SQLException;
 
 public class UserRepository implements IUserRepository {
     //sql with prepared statements
-    private User user;
     private Database database = new Database();
-
-    public UserRepository(User user) {
-        this.user = user;
-    }
+    private User newUser;
 
     @Override
-    public User getUser() {
+    public User getUser(User user) {
         try {
             Connection connection = database.connect();
             String query = "SELECT * FROM person WHERE name = ?;";
@@ -28,12 +24,13 @@ public class UserRepository implements IUserRepository {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                user = new User(
-                        resultSet.getString(1),
+                newUser = new User(
+                        resultSet.getString(3), //why not 2,3 why 3,2?
                         resultSet.getString(2)
                 );
             }
-            return user;
+            connection.close();
+            return newUser;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -41,7 +38,6 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void createUser(User user) {
-        System.out.println("create user function");
         try {
             Connection connection = database.connect();
             String query = "INSERT INTO person (name, password) VALUES (?, ?);";
@@ -51,6 +47,7 @@ public class UserRepository implements IUserRepository {
             preparedStatement.setString(2, user.getPassword());
 
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="deleted system output,">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" afterDir="false" />
+    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="card repository,&#10;battle service">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/StoreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserGetHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/util/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/util/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPostHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPostHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +30,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -78,13 +88,13 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;laptop&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/IdeaProjects/swen1-java-http-server-ws-22&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/IdeaProjects/swen1_haider_2023&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
@@ -104,8 +114,8 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="org.example.server.util" />
       <recent name="org.example.server.handler.user" />
+      <recent name="org.example.server.util" />
     </key>
   </component>
   <component name="RunManager">
@@ -146,6 +156,16 @@
       <workItem from="1697467909017" duration="2042000" />
       <workItem from="1697903392684" duration="927000" />
       <workItem from="1699035543020" duration="1200000" />
+      <workItem from="1699099135634" duration="102000" />
+      <workItem from="1699887854328" duration="4116000" />
+      <workItem from="1699892779201" duration="518000" />
+      <workItem from="1700146480438" duration="4920000" />
+      <workItem from="1700493398053" duration="3209000" />
+      <workItem from="1701098836984" duration="3707000" />
+      <workItem from="1701647455362" duration="38000" />
+      <workItem from="1702307549893" duration="5518000" />
+      <workItem from="1702467493695" duration="517000" />
+      <workItem from="1702496242122" duration="1804000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1694445381192</created>
@@ -213,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697476724840</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="card repository,&#10;battle service">
+      <created>1699099222658</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699099222658</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,15 +296,16 @@
     <MESSAGE value="finding error" />
     <MESSAGE value="sooo many changes,&#10;UerpostHandler and UserRepository works now" />
     <MESSAGE value="deleted system output," />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted system output," />
+    <MESSAGE value="card repository,&#10;battle service" />
+    <option name="LAST_COMMIT_MESSAGE" value="card repository,&#10;battle service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/util/Request.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

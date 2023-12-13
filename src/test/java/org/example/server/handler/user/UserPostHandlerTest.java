@@ -23,21 +23,22 @@ class UserPostHandlerTest {
     public void testValidRequest() throws IOException {
         Request mockRequest = new Request();
         mockRequest.setMethod("POST");
-        mockRequest.setContentType("application/json");
+        mockRequest.setContentType("Content-Type: application/json");
         mockRequest.setBody("{}");
 
-        Response response = userPostHandler.handle(mockRequest, new BufferedReader(new StringReader(" ")));
+        Response response = userPostHandler.handle(mockRequest);
         assertEquals(StatusCode.OK.code, response.getStatus());
+
     }
 
     @Test
     public void testInvalidRequest() throws IOException {
         Request mockRequest = new Request();
         mockRequest.setMethod("GET");
-        mockRequest.setContentType("application/json");
+        mockRequest.setContentType("Content-Type: application/json");
         mockRequest.setBody("{}");
 
-        Response response = userPostHandler.handle(mockRequest, new BufferedReader(new StringReader(" ")));
+        Response response = userPostHandler.handle(mockRequest);
         assertEquals(StatusCode.METHOD_NOT_ALLOWED.code, response.getStatus());
     }
   

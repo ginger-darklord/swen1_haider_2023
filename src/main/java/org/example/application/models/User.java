@@ -10,6 +10,7 @@ public class User {
     private int coin = 20;
     private ArrayList<Card> deck; //nur max 4
     private ArrayList<Card> stack;
+    private String token;
 
     public User() {
     }
@@ -35,4 +36,11 @@ public class User {
         this.Password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

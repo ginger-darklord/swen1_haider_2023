@@ -21,15 +21,14 @@ public class UserPostHandler implements Handler {
         if(request.getMethod().equals("POST")) {
             System.out.println("Entering UserPostHandler");
             if(request.getContentType().startsWith("Content-Type: ")) {
-                String contentType = request.getContentType();
                 String body = request.getBody();
 
                 //parse json data using jackson//
                 ObjectMapper objectMapper = new ObjectMapper();
                 objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
                 try {
-                    User user = objectMapper.readValue(body , User.class); //user.class is wrong
-                    UserRepository userRepository = new UserRepository(user);
+                    User user = objectMapper.readValue(body , User.class);
+                    UserRepository userRepository = new UserRepository();
                     userRepository.createUser(user);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
