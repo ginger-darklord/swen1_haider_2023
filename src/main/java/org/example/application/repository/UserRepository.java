@@ -25,7 +25,7 @@ public class UserRepository implements IUserRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 newUser = new User(
-                        resultSet.getString(3), //why not 2,3 why 3,2?
+                        resultSet.getString(3),
                         resultSet.getString(2)
                 );
             }
@@ -52,6 +52,16 @@ public class UserRepository implements IUserRepository {
             throw new RuntimeException(e);
         }
         System.out.println("created new user");
+    }
+
+    @Override
+    public boolean userExist(User user) {
+        if(user.getUsername() == this.getUser(user).getUsername() || user.getPassword() == this.getUser(user).getPassword()) {
+            System.out.println("User exists already");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

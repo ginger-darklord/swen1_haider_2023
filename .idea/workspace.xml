@@ -4,22 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="card repository,&#10;battle service">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/StoreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserGetHandlerTest.java" afterDir="false" />
+    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/models/CardTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/models/UserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/StatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/StatusCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/util/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/util/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPostHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPostHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserGetHandlerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPostHandlerTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,15 +34,15 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="home" />
+        <entry key="$PROJECT_DIR$" value="laptop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -114,6 +117,9 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.application.service" />
+      <recent name="org.example.application.repository" />
+      <recent name="org.example.application.models" />
       <recent name="org.example.server.handler.user" />
       <recent name="org.example.server.util" />
     </key>
@@ -126,6 +132,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserRepositoryTest.testGetUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swen1_haider_2023" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.application.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.application.repository" />
+      <option name="MAIN_CLASS_NAME" value="org.example.application.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testGetUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserRepositoryTest.testGetUser" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -165,7 +192,9 @@
       <workItem from="1701647455362" duration="38000" />
       <workItem from="1702307549893" duration="5518000" />
       <workItem from="1702467493695" duration="517000" />
-      <workItem from="1702496242122" duration="1804000" />
+      <workItem from="1702496242122" duration="6937000" />
+      <workItem from="1702546970907" duration="3623000" />
+      <workItem from="1702567388255" duration="10066000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1694445381192</created>
@@ -240,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699099222658</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="card repository,&#10;battle service,&#10;login service with bool functions for succesfull login&#10;can now add packages if u are admin to database yay">
+      <created>1702498412630</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1702498412630</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +293,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="origin/laptop" />
                       </list>
                     </value>
                   </entry>
@@ -273,6 +309,16 @@
         <entry key="Branch">
           <value>
             <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/laptop" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="origin/master" />
@@ -297,15 +343,21 @@
     <MESSAGE value="sooo many changes,&#10;UerpostHandler and UserRepository works now" />
     <MESSAGE value="deleted system output," />
     <MESSAGE value="card repository,&#10;battle service" />
-    <option name="LAST_COMMIT_MESSAGE" value="card repository,&#10;battle service" />
+    <MESSAGE value="card repository,&#10;battle service,&#10;login service with bool functions for succesfull login&#10;can now add packages if u are admin to database yay" />
+    <option name="LAST_COMMIT_MESSAGE" value="card repository,&#10;battle service,&#10;login service with bool functions for succesfull login&#10;can now add packages if u are admin to database yay" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java</url>
-          <line>51</line>
+          <line>49</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

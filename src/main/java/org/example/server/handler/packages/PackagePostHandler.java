@@ -33,10 +33,8 @@ public class PackagePostHandler implements Handler {
                 if (loginService.adminLogin(request.getAuthorization())) {
                     this.splitPackage(request.getBody());
                     for(String part : cardPackage) {
-                        //too many """""""""'
-                        //part = part.replaceAll();
                         Card card = objectMapper.readValue(part, Card.class);
-                         cardRepository.createCard(card);
+                        cardRepository.createCard(card);
                     }
                 }
 

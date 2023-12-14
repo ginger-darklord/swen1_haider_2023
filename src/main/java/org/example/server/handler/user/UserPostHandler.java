@@ -14,6 +14,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class UserPostHandler implements Handler {
+
+    private UserRepository userRepository;
+    private  ObjectMapper objectMapper;
+    public UserPostHandler() {}
+
+    //only using it for the testing class
+    public UserPostHandler(UserRepository userRepository, ObjectMapper objectMapper) {
+        this.userRepository = userRepository;
+        this.objectMapper = objectMapper;
+    }
     @Override
     public Response handle(Request request) throws IOException {
         Response response = new Response();
@@ -24,12 +34,14 @@ public class UserPostHandler implements Handler {
                 String body = request.getBody();
 
                 //parse json data using jackson//
-                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper = new ObjectMapper();
                 objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
                 try {
                     User user = objectMapper.readValue(body , User.class);
-                    UserRepository userRepository = new UserRepository();
-                    userRepository.createUser(user);
+                    userRepository = new UserRepository();
+                    if(!userRepository.userExist(user)) {
+                        userRepository.createUser(user);
+                    }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

@@ -8,6 +8,4 @@ import java.util.List;
 
 public interface ICardRepository {
     public void createCard(Card card);
-
-    public void createPackage(Card card);
 }

@@ -8,8 +8,8 @@ public class User {
     private String Username;
     private String Password;
     private int coin = 20;
-    private ArrayList<Card> deck; //nur max 4
-    private ArrayList<Card> stack;
+    //private ArrayList<Card> deck; //nur max 4
+    //private ArrayList<Card> stack;
     private String token;
 
     public User() {

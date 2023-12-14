@@ -5,6 +5,7 @@ import org.example.server.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -12,7 +13,6 @@ import java.util.ListIterator;
 public class CardRepository implements ICardRepository{
     private Card card;
     private Database database = new Database();
-    private ArrayList<Card> packages;
 
     @Override
     public void createCard(Card card) {
@@ -32,13 +32,27 @@ public class CardRepository implements ICardRepository{
         }
     }
 
-    @Override
-    public void createPackage(Card card){
+    public Card getCard(Card card) {
+        try {
+            Card result = null;
+            Connection connection = database.connect();
+            String query = "SELECT * FROM card WHERE name = ?";
 
-        ListIterator<Card> iterator = packages.listIterator();
-        while (iterator.hasNext()) {
-            createCard(iterator.next());
-            System.out.println("package was sent to createCard and database");
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, card.getName());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                result = new Card(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3)
+                );
+            }
+
+            connection.close();
+            return result;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
