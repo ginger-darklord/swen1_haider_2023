@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface ICardRepository {
     public void createCard(Card card);
+    public Card getCard(String damage);
+
+    public boolean enoughCardsExist();
 }

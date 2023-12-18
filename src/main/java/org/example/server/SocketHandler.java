@@ -4,9 +4,7 @@ import org.example.server.handler.Handler;
 import org.example.server.util.Request;
 import org.example.server.util.Response;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.util.HashMap;
@@ -25,6 +23,7 @@ public class SocketHandler implements Runnable {
     public void run() {
         try {
             InputStreamReader isr = new InputStreamReader(this.clientSocket.getInputStream());
+            OutputStreamWriter osw = new OutputStreamWriter(this.clientSocket.getOutputStream());
             BufferedReader reader = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
             while (reader.ready()) {
@@ -43,10 +42,14 @@ public class SocketHandler implements Runnable {
             if (h != null) {
                 Response handled = h.handle(request);
                 handled.printResponse();
+                handled.setContentType("application/json");
+                handled.send(osw);
+                osw.flush();
+
             }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
+        }
 }

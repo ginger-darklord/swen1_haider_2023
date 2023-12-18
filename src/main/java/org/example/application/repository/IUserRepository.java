@@ -3,9 +3,11 @@ package org.example.application.repository;
 import org.example.application.models.User;
 
 public interface IUserRepository {
-    public User getUser(User user);
+    public User getUserWithName(User user);
+    public User getUserWithToken(String token);
     public void createUser(User user);
     public boolean userExist(User user);
-    public void updateUser();
-
+    public boolean tokenExist();
+    public void updateUser(User user);
+    public void buyWithCoin(int numberOfCoin, User user);
 }

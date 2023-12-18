@@ -9,72 +9,136 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRepository implements IUserRepository {
-    //sql with prepared statements
     private Database database = new Database();
-    private User newUser;
+    private User result;
+    private Connection connection;
+    private PreparedStatement preparedStatement;
 
     @Override
-    public User getUser(User user) {
+    public User getUserWithName(User user) {
         try {
-            Connection connection = database.connect();
+            connection = database.connect();
             String query = "SELECT * FROM person WHERE name = ?;";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                newUser = new User(
+                result = new User(
                         resultSet.getString(3),
                         resultSet.getString(2)
                 );
             }
-            connection.close();
-            return newUser;
+            return result;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
+        }
+    }
+
+    @Override
+    public User getUserWithToken(String token) {
+        try {
+            connection = database.connect();
+            String query = "SELECT * FROM person WHERE token = ?;";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, token);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                result = new User(
+                        resultSet.getString(3),
+                        resultSet.getString(2),
+                        resultSet.getInt(7)
+                );
+
+            }
+            return result;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
         }
     }
 
     @Override
     public void createUser(User user) {
         try {
-            Connection connection = database.connect();
-            String query = "INSERT INTO person (name, password) VALUES (?, ?);";
+            connection = database.connect();
+            String query = "INSERT INTO person (name, password, token, money) VALUES (?, ?, ?, ?);";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getToken());
+            preparedStatement.setInt(4, 20);
 
             preparedStatement.executeUpdate();
-            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
         }
         System.out.println("created new user");
     }
 
     @Override
     public boolean userExist(User user) {
-        if(user.getUsername() == this.getUser(user).getUsername() || user.getPassword() == this.getUser(user).getPassword()) {
+        if (this.getUserWithName(user) == null) {
+            return false;
+        } else if (user.getUsername().equals(this.getUserWithName(user).getUsername()) || user.getPassword().equals(this.getUserWithName(user).getPassword())) {
             System.out.println("User exists already");
             return true;
         } else {
             return false;
         }
+
     }
 
     @Override
-    public void updateUser() {
+    public boolean tokenExist() {
+        return false;
+    }
+
+    @Override
+    public void updateUser(User user) {
         try {
-            Connection connection = database.connect();
+            connection = database.connect();
             String query = "UPDATE person SET Bio = ? Image = ? WHERE name = ?;";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            //preparedStatement.setString();
-            preparedStatement.execute();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, user.getBio());
+            preparedStatement.setString(2, user.getImage());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
+        }
+    }
+
+    @Override
+    public void buyWithCoin(int numberOfCoin, User user) {
+        user.setCoin(user.getCoin() - numberOfCoin);
+    }
+
+    public void editUser(User user) {
+
+    }
+
+    public void closeConnection() {
+        try {
+            if(connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+            if(preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 }

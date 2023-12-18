@@ -33,7 +33,7 @@ class UserRepositoryTest {
     public void testCreateAndGetUser() {
         User user = new User("doe", "jane");
         userRepository.createUser(user);
-        User result = userRepository.getUser(user);
+        User result = userRepository.getUserWithName(user);
 
         assertEquals(user.getUsername(), result.getUsername());
         assertEquals(user.getPassword(), result.getPassword());

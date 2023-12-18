@@ -9,6 +9,7 @@ import org.example.server.handler.session.SessionPostHandler;
 import org.example.server.handler.trading.TradingDeleteHandler;
 import org.example.server.handler.trading.TradingGetHandler;
 import org.example.server.handler.trading.TradingPostHandler;
+import org.example.server.handler.transaction.TransactionPostHandler;
 import org.example.server.handler.user.UserGetHandler;
 import org.example.server.handler.user.UserPostHandler;
 
@@ -37,6 +38,7 @@ public class Server {
         requestManager.on("/tradings", Handler.HttpMethod.DELETE, new TradingDeleteHandler());
         requestManager.on("/tradings", Handler.HttpMethod.GET, new TradingGetHandler());
         requestManager.on("/tradings", Handler.HttpMethod.POST, new TradingPostHandler());
+        requestManager.on("/transactions/packages", Handler.HttpMethod.POST, new TransactionPostHandler());
     }
 
 
@@ -52,7 +54,7 @@ public class Server {
             Thread thread = new Thread(new SocketHandler(clientSocket, requestManager));
             thread.start();
 
-            this.clientThreads.add(thread);
+            clientThreads.add(thread);
         }
     }
 

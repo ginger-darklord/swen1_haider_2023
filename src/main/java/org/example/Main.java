@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.application.Game;
 import org.example.server.Server;
 
 import java.io.IOException;
@@ -15,5 +14,7 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        //Delete delete = new Delete();
+        //delete.deleteAllUser();
     }
 }

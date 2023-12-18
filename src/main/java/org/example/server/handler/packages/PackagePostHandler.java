@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.application.CardType;
+import org.example.application.ElementType;
 import org.example.application.models.Card;
 import org.example.application.repository.CardRepository;
 import org.example.application.repository.UserRepository;
@@ -14,6 +16,8 @@ import org.example.server.util.Request;
 import org.example.server.util.Response;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
 public class PackagePostHandler implements Handler {
     private LoginService loginService = new LoginService();
@@ -30,11 +34,16 @@ public class PackagePostHandler implements Handler {
                 ObjectMapper objectMapper = new ObjectMapper();
                 objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
-                if (loginService.adminLogin(request.getAuthorization())) {
+                if (loginService.adminTokenLogin(request.getAuthorization())) {
                     this.splitPackage(request.getBody());
-                    for(String part : cardPackage) {
+
+                    Iterator<String> iterator = cardPackage.iterator();
+                    while (iterator.hasNext()) {
+                        String part = iterator.next();
                         Card card = objectMapper.readValue(part, Card.class);
+                        this.setTypeAndElement(card);
                         cardRepository.createCard(card);
+                        iterator.remove();
                     }
                 }
 
@@ -53,6 +62,34 @@ public class PackagePostHandler implements Handler {
             part = part.replaceAll("\\[|\\]", "");
             this.cardPackage.add(part);
         }
+    }
+
+    public void setTypeAndElement(Card card) {
+        //CARDTYPE
+        if(card.getName().endsWith("Spell")) {
+            card.setCardType(CardType.SPELL);
+            //ELEMENTTYPE
+            if(card.getName().startsWith("Water")) {
+                card.setElementType(ElementType.WATER);
+            } else if(card.getName().startsWith("Fire")) {
+                card.setElementType(ElementType.FIRE);
+            } else if (card.getName().startsWith("Regular")) {
+                card.setElementType(ElementType.NORMAL);
+            }
+        } else {
+            card.setCardType(CardType.MONSTER);
+            //ELEMENTTYPE
+            if(card.getName().startsWith("Water")) {
+                card.setElementType(ElementType.WATER);
+            } else if (card.getName().startsWith("Dragon")) {
+                card.setElementType(ElementType.FIRE);
+            } else if (card.getName().startsWith("Ork")) {
+                card.setElementType(ElementType.NORMAL);
+            }
+
+
+        }
+
     }
 
 }

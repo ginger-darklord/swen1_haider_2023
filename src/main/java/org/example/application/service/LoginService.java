@@ -4,12 +4,13 @@ import org.example.application.models.Card;
 import org.example.application.models.User;
 import org.example.application.repository.UserRepository;
 
-public class LoginService {
-    private UserRepository userRepository;
-    public boolean login(User user) {
-        userRepository = new UserRepository();
+import java.util.Scanner;
 
-        if(userRepository.getUser(user).getUsername().equals(user.getUsername()) && userRepository.getUser(user).getPassword().equals(user.getPassword())) {
+public class LoginService {
+    private UserRepository userRepository = new UserRepository();
+    private BattleService battleService;
+    public boolean login(User user) {
+        if(userRepository.getUserWithName(user).getUsername().equals(user.getUsername()) && userRepository.getUserWithName(user).getPassword().equals(user.getPassword())) {
             System.out.println("Login successful");
             System.out.println("You are logged in as: " + user.getUsername());
             return true;
@@ -18,7 +19,7 @@ public class LoginService {
         }
     }
 
-    public boolean adminLogin(String authorization) {
+    public boolean adminTokenLogin(String authorization) {
         if (authorization.equals("Authorization: Bearer admin-mtcgToken")) {
             System.out.println("login as admin successful");
             return true;
@@ -26,4 +27,15 @@ public class LoginService {
             return false;
         }
     }
+
+    public boolean userTokenLogin(String authorization) {
+        if(authorization.equals("Authorization: Bearer kienboec-mtcgToken")) {
+            return true;
+        } else if (authorization.equals("Authorization: Bearer altenhof-mtcgToken")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

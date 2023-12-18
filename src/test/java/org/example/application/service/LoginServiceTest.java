@@ -13,7 +13,7 @@ class LoginServiceTest {
     @Test
     public void testAdminLogin() {
         String authorization = "Authorization: Bearer admin-mtcgToken";
-        boolean admin = loginService.adminLogin(authorization);
+        boolean admin = loginService.adminTokenLogin(authorization);
 
         assertEquals(true, admin);
     }

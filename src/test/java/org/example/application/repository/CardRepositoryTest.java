@@ -31,9 +31,10 @@ class CardRepositoryTest {
 
     @Test
     public void testCreateAndGetCard() {
+        //toDO write differently
         Card card = new Card("1234567892", "Chimera", "40");
         cardRepository.createCard(card);
-        Card result = cardRepository.getCard(card);
+        Card result = cardRepository.getCard(card.getDamage());
 
         assertEquals(card.getId(), result.getId());
         assertEquals(card.getName(), result.getName());

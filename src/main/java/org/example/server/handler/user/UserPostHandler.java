@@ -29,7 +29,6 @@ public class UserPostHandler implements Handler {
         Response response = new Response();
 
         if(request.getMethod().equals("POST")) {
-            System.out.println("Entering UserPostHandler");
             if(request.getContentType().startsWith("Content-Type: ")) {
                 String body = request.getBody();
 
@@ -38,8 +37,10 @@ public class UserPostHandler implements Handler {
                 objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
                 try {
                     User user = objectMapper.readValue(body , User.class);
+                    user.setToken("Authorization: Bearer " + user.getUsername() + "-mtcgToken");
+
                     userRepository = new UserRepository();
-                    if(!userRepository.userExist(user)) {
+                    if(userRepository.userExist(user) == false) {
                         userRepository.createUser(user);
                     }
                 } catch (IOException e) {

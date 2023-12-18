@@ -4,25 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/models/CardTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/models/UserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" afterDir="false" />
+    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="made tests for Card, User, LoginService, UserRepository, CardRepository&#10;made function to know if user exists already">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/CardType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/ElementType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/transaction/TransactionPostHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/Game.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/StatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/StatusCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserGetHandlerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPostHandlerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/util/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/util/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,10 +37,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -124,7 +129,7 @@
       <recent name="org.example.server.util" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="swen1_haider_2023" />
@@ -195,6 +200,16 @@
       <workItem from="1702496242122" duration="6937000" />
       <workItem from="1702546970907" duration="3623000" />
       <workItem from="1702567388255" duration="10066000" />
+      <workItem from="1702654071200" duration="5893000" />
+      <workItem from="1702718430807" duration="1592000" />
+      <workItem from="1702730567071" duration="1951000" />
+      <workItem from="1702742387931" duration="564000" />
+      <workItem from="1702743014553" duration="3683000" />
+      <workItem from="1702753992363" duration="14369000" />
+      <workItem from="1702906656981" duration="166000" />
+      <workItem from="1702911349972" duration="715000" />
+      <workItem from="1702912773817" duration="4223000" />
+      <workItem from="1702920674276" duration="346000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1694445381192</created>
@@ -350,14 +365,34 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java</url>
           <line>37</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/Server.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
