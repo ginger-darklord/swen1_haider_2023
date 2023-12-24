@@ -43,11 +43,13 @@ public class PackagePostHandler implements Handler {
                         Card card = objectMapper.readValue(part, Card.class);
                         this.setTypeAndElement(card);
                         cardRepository.createCard(card);
+                        //or it won't save new cards
                         iterator.remove();
                     }
+                    response.setStatusCode(StatusCode.CREATED);
+                } else {
+                    response.setStatusCode(StatusCode.FORBIDDEN);
                 }
-
-                response.setStatusCode(StatusCode.OK);
             }
         } else {
             response.setStatusCode(StatusCode.METHOD_NOT_ALLOWED);

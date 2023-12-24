@@ -72,7 +72,7 @@ public class Request {
         for(String part : headerParts) {
             if(part.equals("Content-Type: application/json")) {
                 this.setContentType(part);
-            } else if (part.equals("Authorization: Bearer admin-mtcgToken")) {
+            } else if (part.startsWith("Authorization: ")) {
                 this.setAuthorization(part);
             }
         }

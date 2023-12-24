@@ -31,7 +31,7 @@ class UserRepositoryTest {
 
     @Test
     public void testCreateAndGetUser() {
-        User user = new User("doe", "jane");
+        User user = new User("doe", "jane","doe-token", 20);
         userRepository.createUser(user);
         User result = userRepository.getUserWithName(user);
 

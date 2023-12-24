@@ -12,10 +12,12 @@ public class Card {
 
     public Card() {}
 
-    public Card(String id, String name, String damage) {
+    public Card(String id, String name, String damage, String type, String element) {
         this.Id = id;
         this.Name = name;
         this.Damage = damage;
+        this.type = type;
+        this.element = element;
     }
 
     public String getDamage() {

@@ -31,7 +31,10 @@ public class SocketHandler implements Runnable {
             }
             String[] rps = sb.toString().split("\r\n\r\n");
             String header = rps[0];
-            String body = rps[1];
+            String body = null;
+            if(rps.length > 1) {
+                body = rps[1];
+            }
 
             //parsing path, method, usw.. of request header
             Request request = new Request();
@@ -51,5 +54,5 @@ public class SocketHandler implements Runnable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        }
+    }
 }

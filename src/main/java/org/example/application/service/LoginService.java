@@ -20,20 +20,31 @@ public class LoginService {
     }
 
     public boolean adminTokenLogin(String authorization) {
-        if (authorization.equals("Authorization: Bearer admin-mtcgToken")) {
-            System.out.println("login as admin successful");
-            return true;
+        if (userRepository.tokenExist(authorization)) {
+            User admin = userRepository.getUserWithToken(authorization);
+            if (admin.getUsername().equals("admin") && admin.getToken().equals("Authorization: Bearer " + admin.getUsername() + "-mtcgToken")) {
+                System.out.println("login as admin successful");
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
     }
 
     public boolean userTokenLogin(String authorization) {
-        if(authorization.equals("Authorization: Bearer kienboec-mtcgToken")) {
-            return true;
-        } else if (authorization.equals("Authorization: Bearer altenhof-mtcgToken")) {
-            return true;
+        if (userRepository.tokenExist(authorization)) {
+            User user = userRepository.getUserWithToken(authorization);
+            if(user.getToken().equals("Authorization: Bearer " + user.getUsername() + "-mtcgToken")) {
+                System.out.println("You are logged in as: " + user.getUsername());
+                return true;
+            } else {
+                System.out.println("Wrong username or token");
+                return false;
+            }
         } else {
+            System.out.println(authorization + " does not exist as token.");
             return false;
         }
     }

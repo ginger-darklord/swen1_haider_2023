@@ -15,16 +15,16 @@ import org.example.server.util.Request;
 import org.example.server.util.Response;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TransactionPostHandler implements Handler
 {
     private Response response;
     private CardRepository cardRepository;
-    private ObjectMapper objectMapper;
     private LoginService loginService;
     private User user;
-    private Card card;
     private UserRepository userRepository;
+    private ArrayList<Card> packages = new ArrayList<>();
     @Override
     public Response handle(Request request) throws JsonProcessingException, IOException {
         response = new Response();
@@ -34,30 +34,37 @@ public class TransactionPostHandler implements Handler
                 loginService = new LoginService();
                 if(loginService.userTokenLogin(request.getAuthorization())) {
                     userRepository = new UserRepository();
-                    user = userRepository.getUserWithToken(request.getAuthorization());
-                    if(user.getCoin() <= 0) {
-                        System.out.println("User" + user.getUsername() + "does not have enough money to acquire a package");
+                    cardRepository = new CardRepository();
+                    //checks if token exists
+                    if(userRepository.tokenExist(request.getAuthorization())) {
+                        user = userRepository.getUserWithToken(request.getAuthorization());
                     } else {
-                        userRepository.buyWithCoin(5, user);
+                        response.setStatusCode(StatusCode.BAD_REQUEST);
+                    }
+
+                    //checks money
+                    if(user.getCoin() <= 0) {
+                        System.out.println("User " + user.getUsername() + " does not have enough money to acquire a package");
+                        response.setStatusCode(StatusCode.BAD_REQUEST);
+                    } else {
                         if (cardRepository.enoughCardsExist()) {
-                            int cnt = 0;
-                            while (cnt < 5) {
-                                card = cardRepository.getCard("100");
-                                //while user saves cards maybe sent into database which user has which card?
-                                user.saveCardsStack(card);
-                                user.showStack(user);
-                                cnt++;
-                            }
+                            //selects card with limit of 5 and returns them in arrayList
+                            packages = cardRepository.getPackage();
+                            user.setCoin(user.getCoin() - 5);
+                            userRepository.buyWithCoin(user.getCoin(), user);
+
+                            //saves which user has which card
+                            cardRepository.saveUsername(user.getUsername(), packages);
+                            user.saveInStack(packages, user);
                             response.setStatusCode(StatusCode.OK);
                         } else {
-                            response.setStatusCode(StatusCode.NOT_FOUND);
+                            response.setStatusCode(StatusCode.BAD_REQUEST);
                         }
                     }
 
                 }
             }
         }
-
 
         return response;
     }

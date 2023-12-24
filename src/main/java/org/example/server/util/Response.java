@@ -53,12 +53,21 @@ public class Response {
     public void printResponse() {
         System.out.println("Status-Code: " + this.getStatus());
         System.out.println("Status-Message: " + this.getMessage());
+        System.out.println("---------------------------------------------");
     }
 
     public void send(OutputStreamWriter osw) throws IOException {
         osw.write("HTTP/1.1 " + this.getStatus() + " " +  this.getMessage() + "\r\n");
         osw.write("Content-Type: "+ this.getContentType() + "\r\n");
-        osw.write("Content-Length: 0\r\n");
-        osw.write("\r\n\r\n");
+        osw.write("Content-Length: " + this.getMessageLength() + "\r\n");
+        if(this.getBody() != null) {
+            osw.write( "\r\n" + this.getBody() + "\r\n");
+        } else {
+            osw.write( "\r\n\r\n");
+        }
+    }
+
+    public void countMessageLength(Response response) {
+        response.setMessageLength(response.getBody().length());
     }
 }

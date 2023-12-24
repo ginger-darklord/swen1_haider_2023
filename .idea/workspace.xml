@@ -4,30 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="made tests for Card, User, LoginService, UserRepository, CardRepository&#10;made function to know if user exists already">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/CardType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/ElementType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/transaction/TransactionPostHandler.java" afterDir="false" />
+    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="too many changes idk&#10;sends response to curl&#10;can create and login user&#10;can save packages in database&#10;working und aquire packages&#10;tests have to be rewritten">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/Game.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/StatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/StatusCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/card/CardGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/card/CardGetHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckGetHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckPutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckPutHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/transaction/TransactionPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/transaction/TransactionPostHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/util/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/util/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/util/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/util/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +206,12 @@
       <workItem from="1702906656981" duration="166000" />
       <workItem from="1702911349972" duration="715000" />
       <workItem from="1702912773817" duration="4223000" />
-      <workItem from="1702920674276" duration="346000" />
+      <workItem from="1702920674276" duration="5538000" />
+      <workItem from="1703001715835" duration="2337000" />
+      <workItem from="1703152073465" duration="3225000" />
+      <workItem from="1703162114844" duration="2774000" />
+      <workItem from="1703167995118" duration="3428000" />
+      <workItem from="1703350836427" duration="8137000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1694445381192</created>
@@ -291,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702498412630</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="too many changes idk&#10;sends response to curl&#10;can create and login user&#10;can save packages in database&#10;working und aquire packages&#10;tests have to be rewritten">
+      <created>1702921152311</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1702921152311</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +368,8 @@
     <MESSAGE value="deleted system output," />
     <MESSAGE value="card repository,&#10;battle service" />
     <MESSAGE value="card repository,&#10;battle service,&#10;login service with bool functions for succesfull login&#10;can now add packages if u are admin to database yay" />
-    <option name="LAST_COMMIT_MESSAGE" value="card repository,&#10;battle service,&#10;login service with bool functions for succesfull login&#10;can now add packages if u are admin to database yay" />
+    <MESSAGE value="too many changes idk&#10;sends response to curl&#10;can create and login user&#10;can save packages in database&#10;working und aquire packages&#10;tests have to be rewritten" />
+    <option name="LAST_COMMIT_MESSAGE" value="too many changes idk&#10;sends response to curl&#10;can create and login user&#10;can save packages in database&#10;working und aquire packages&#10;tests have to be rewritten" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -370,31 +380,19 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/session/SessionPostHandler.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/Server.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="18" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckPutHandler.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/swen1_haider_2023$Server.ic" NAME="Server Coverage Results" MODIFIED="1703355099887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

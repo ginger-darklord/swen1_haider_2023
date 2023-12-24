@@ -17,17 +17,15 @@ public class User {
     private String token;
 
     public User() {
+        this.stack = new ArrayList<>();
     }
 
-    public User(String password, String username) {
+    public User(String username, String password,String token, int coin) {
         this.Password = password;
         this.Username = username;
-    }
-
-    public User(String username, String password, int coin) {
-        this.Password = password;
-        this.Username = username;
+        this.token = token;
         this.coin = coin;
+        this.stack = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -58,9 +56,10 @@ public class User {
         this.coin = coin;
     }
 
-    public void saveCardsStack(Card card) {
-        this.stack = new ArrayList<>();
-        this.stack.add(card);
+    public void saveInStack(ArrayList<Card> packages, User user) {
+        for(Card packagePart : packages) {
+            user.stack.add(packagePart);
+        }
     }
 
     public String getBio() {
@@ -79,24 +78,7 @@ public class User {
         this.Image = image;
     }
 
-    public void showStack(User user) {
-        System.out.println("-----------------------------");
-        System.out.println("All Cards in the Stack:");
-        if(user.stack == null) {
-            System.out.println("There are no cards in the stack");
-        } else {
-            for (Card stackPart : user.stack) {
-                System.out.println("----------------------------------------");
-                System.out.println("Id: " + stackPart.getId());
-                System.out.println("Name: " + stackPart.getName());
-                System.out.println("Damage: " + stackPart.getDamage());
-                System.out.println("-----------------------------------------");
-            }
-        }
-    }
-
     public void showDeck(User user) {
-        //output only in json
         System.out.println("-----------------------------");
         System.out.println("All Cards in the Deck:");
         if(user.deck == null) {

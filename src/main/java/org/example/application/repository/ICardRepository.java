@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface ICardRepository {
     public void createCard(Card card);
-    public Card getCard(String damage);
+    public ArrayList<Card> getPackage();
+    public void saveUsername(String username, ArrayList<Card> packages);
+    public Card getCardByUsername(String username);
 
     public boolean enoughCardsExist();
 }

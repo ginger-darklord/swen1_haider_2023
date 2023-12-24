@@ -36,10 +36,9 @@ public class SessionPostHandler implements Handler {
                 try {
                     User user = objectMapper.readValue(body , User.class);
                     loginService = new LoginService();
-                    if(loginService.login(user) == false) {
-                        response.setStatusCode(StatusCode.NOT_FOUND);
+                    if(!loginService.login(user)) {
+                        response.setStatusCode(StatusCode.BAD_REQUEST);
                     } else {
-                        //can edit user data or battle if logged in
                         response.setStatusCode(StatusCode.OK);
                     }
                 } catch (IOException e) {

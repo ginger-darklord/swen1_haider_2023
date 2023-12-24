@@ -42,12 +42,13 @@ public class UserPostHandler implements Handler {
                     userRepository = new UserRepository();
                     if(userRepository.userExist(user) == false) {
                         userRepository.createUser(user);
+                        response.setStatusCode(StatusCode.CREATED);
+                    } else {
+                        response.setStatusCode(StatusCode.BAD_REQUEST);
                     }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
-                response.setStatusCode(StatusCode.OK);
             }
 
         } else {

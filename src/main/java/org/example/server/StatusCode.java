@@ -3,6 +3,7 @@ package org.example.server;
 public enum StatusCode {
 
     OK(200, "OK"),
+    CREATED(201, "CREATED"),
     BAD_REQUEST(400, "BAD_REQUEST"),
     UNAUTHORIZED_ERROR(401, "UNAUTHORIZED_ERROR"),
     FORBIDDEN(403, "FORBIDDEN"),

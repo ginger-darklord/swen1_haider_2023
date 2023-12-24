@@ -26,8 +26,10 @@ public class UserRepository implements IUserRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 result = new User(
+                        resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getString(2)
+                        resultSet.getString(6),
+                        resultSet.getInt(7)
                 );
             }
             return result;
@@ -49,8 +51,9 @@ public class UserRepository implements IUserRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 result = new User(
-                        resultSet.getString(3),
                         resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(6),
                         resultSet.getInt(7)
                 );
 
@@ -98,8 +101,25 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public boolean tokenExist() {
-        return false;
+    public boolean tokenExist(String token) {
+        try {
+            connection = database.connect();
+            String query = "SELECT FROM person WHERE token = ?;";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, token);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
+        }
+
     }
 
     @Override
@@ -120,11 +140,22 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public void buyWithCoin(int numberOfCoin, User user) {
-        user.setCoin(user.getCoin() - numberOfCoin);
-    }
+    public void buyWithCoin(int coin, User user) {
+        System.out.println("Coin: " + coin);
+        System.out.println("Name: " + user.getUsername());
+        try {
+            connection = database.connect();
+            String query = "UPDATE person SET money = ? WHERE name = ?;";
 
-    public void editUser(User user) {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, coin);
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
+        }
 
     }
 

@@ -7,7 +7,7 @@ public interface IUserRepository {
     public User getUserWithToken(String token);
     public void createUser(User user);
     public boolean userExist(User user);
-    public boolean tokenExist();
+    public boolean tokenExist(String token);
     public void updateUser(User user);
     public void buyWithCoin(int numberOfCoin, User user);
 }
