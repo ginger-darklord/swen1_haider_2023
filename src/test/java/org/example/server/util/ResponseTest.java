@@ -13,12 +13,12 @@ class ResponseTest {
 
         response.setStatusCode(StatusCode.OK);
         response.setContentType("plain/html");
-        response.setContent("Hello World");
+        response.setBody("Hello World");
 
         assertEquals(StatusCode.OK.code, response.getStatus());
         assertEquals(StatusCode.OK.message,  response.getMessage());
         assertEquals("plain/html", response.getContentType());
-        assertEquals("Hello World", response.getContent());
+        assertEquals("Hello World", response.getBody());
     }
 
 }

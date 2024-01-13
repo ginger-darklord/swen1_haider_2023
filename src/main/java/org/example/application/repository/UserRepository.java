@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserRepository implements IUserRepository {
     private Database database = new Database();
@@ -18,7 +19,7 @@ public class UserRepository implements IUserRepository {
     public User getUserWithName(User user) {
         try {
             connection = database.connect();
-            String query = "SELECT * FROM person WHERE name = ?;";
+            String query = "SELECT * FROM person WHERE username = ?;";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());
@@ -29,7 +30,11 @@ public class UserRepository implements IUserRepository {
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(6),
-                        resultSet.getInt(7)
+                        resultSet.getInt(7),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(8),
+                        resultSet.getInt(9)
                 );
             }
             return result;
@@ -54,7 +59,11 @@ public class UserRepository implements IUserRepository {
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(6),
-                        resultSet.getInt(7)
+                        resultSet.getInt(7),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(8),
+                        resultSet.getInt(9)
                 );
 
             }
@@ -70,13 +79,14 @@ public class UserRepository implements IUserRepository {
     public void createUser(User user) {
         try {
             connection = database.connect();
-            String query = "INSERT INTO person (name, password, token, money) VALUES (?, ?, ?, ?);";
+            String query = "INSERT INTO person (username, password, token, money, elo) VALUES (?, ?, ?, ?, ?);";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getToken());
             preparedStatement.setInt(4, 20);
+            preparedStatement.setInt(5, 100);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -85,19 +95,6 @@ public class UserRepository implements IUserRepository {
             this.closeConnection();
         }
         System.out.println("created new user");
-    }
-
-    @Override
-    public boolean userExist(User user) {
-        if (this.getUserWithName(user) == null) {
-            return false;
-        } else if (user.getUsername().equals(this.getUserWithName(user).getUsername()) || user.getPassword().equals(this.getUserWithName(user).getPassword())) {
-            System.out.println("User exists already");
-            return true;
-        } else {
-            return false;
-        }
-
     }
 
     @Override
@@ -123,14 +120,16 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser(User user, String username) {
         try {
             connection = database.connect();
-            String query = "UPDATE person SET Bio = ? Image = ? WHERE name = ?;";
+            String query = "UPDATE person SET name = ?, bio = ?, image = ? WHERE username = ?;";
 
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, user.getBio());
-            preparedStatement.setString(2, user.getImage());
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getBio());
+            preparedStatement.setString(3, user.getImage());
+            preparedStatement.setString(4, username);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -141,11 +140,9 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void buyWithCoin(int coin, User user) {
-        System.out.println("Coin: " + coin);
-        System.out.println("Name: " + user.getUsername());
         try {
             connection = database.connect();
-            String query = "UPDATE person SET money = ? WHERE name = ?;";
+            String query = "UPDATE person SET money = ? WHERE username = ?;";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, coin);
@@ -157,6 +154,43 @@ public class UserRepository implements IUserRepository {
             this.closeConnection();
         }
 
+    }
+
+    @Override
+    public ArrayList<Integer> getScoreboard() {
+        try {
+            connection = database.connect();
+            String query = "SELECT elo FROM person;";
+            ArrayList<Integer> eloValues = new ArrayList<>();
+
+            preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                eloValues.add(resultSet.getInt(9));
+            }
+            return eloValues;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
+        }
+    }
+
+    @Override
+    public void battleReady(User user, boolean ready) {
+        try {
+            connection = database.connect();
+            String query = "INSERT INTO battle(username, ready) VALUES (?,?);";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setBoolean(2, ready);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
+        }
     }
 
     public void closeConnection() {

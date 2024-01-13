@@ -1,6 +1,7 @@
 package org.example.application.repository;
 
 import org.example.application.models.Card;
+import org.example.application.models.User;
 import org.example.server.Database;
 
 import java.sql.Connection;
@@ -68,7 +69,7 @@ public class CardRepository implements ICardRepository{
             ArrayList<Card> packages = new ArrayList<>();
             Card result = null;
             connection = database.connect();
-            String query = "SELECT * FROM card LIMIT 5;";
+            String query = "SELECT * FROM card WHERE username IS NULL LIMIT 5;";
 
             preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -80,7 +81,8 @@ public class CardRepository implements ICardRepository{
                         resultSet.getString(4),
                         resultSet.getString(5)
                 );
-                packages.add(result) ;          }
+                packages.add(result);
+            }
             return packages;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -170,7 +172,7 @@ public class CardRepository implements ICardRepository{
             ArrayList<Card> deck = new ArrayList<>();
             Card result = null;
             connection = database.connect();
-            String query = "SELECT * FROM card WHERE username = ? LIMIT 4;";
+            String query = "SELECT * FROM card WHERE username = ? ORDER BY damage DESC LIMIT 4;";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
@@ -217,6 +219,28 @@ public class CardRepository implements ICardRepository{
         } finally {
             this.closeConnection();
         }
+    }
+
+    public void addToDeck(Card card, User user) {
+        try {
+            connection = database.connect();
+            String query = "INSERT INTO deck VALUES (?, ?, ?, ?, ?, ?);";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, card.getId());
+            preparedStatement.setString(2, card.getName());
+            preparedStatement.setString(3, card.getDamage());
+            preparedStatement.setString(4, card.getType());
+            preparedStatement.setString(5, card.getElement());
+            preparedStatement.setString(6, user.getUsername());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeConnection();
+        }
+
     }
 
     public void closeConnection() {

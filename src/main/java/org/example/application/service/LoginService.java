@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 public class LoginService {
     private UserRepository userRepository = new UserRepository();
-    private BattleService battleService;
     public boolean login(User user) {
+        if(userRepository.getUserWithName(user) == null) {
+            return false;
+        }
         if(userRepository.getUserWithName(user).getUsername().equals(user.getUsername()) && userRepository.getUserWithName(user).getPassword().equals(user.getPassword())) {
             System.out.println("Login successful");
             System.out.println("You are logged in as: " + user.getUsername());
@@ -47,6 +49,18 @@ public class LoginService {
             System.out.println(authorization + " does not exist as token.");
             return false;
         }
+    }
+
+    public boolean userExist(User user) {
+        if (userRepository.getUserWithName(user) == null) {
+            return false;
+        } else if (user.getUsername().equals(userRepository.getUserWithName(user).getUsername()) || user.getPassword().equals(userRepository.getUserWithName(user).getPassword())) {
+            System.out.println("User exists already");
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }

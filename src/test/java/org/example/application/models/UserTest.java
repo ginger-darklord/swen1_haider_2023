@@ -8,16 +8,13 @@ class UserTest {
 
     @Test
     public void testUserGetterAndSetter() {
-        //Arrange
         User user = new User();
+
         user.setUsername("lena");
         user.setPassword("maier");
-
-        //Act
         String username = user.getUsername();
         String password = user.getPassword();
 
-        //Assert
         assertEquals("lena", username);
         assertEquals("maier", password);
     }

@@ -8,9 +8,12 @@ import java.util.Scanner;
 public class User {
     private String Username;
     private String Password;
+    private String Name;
     private int coin;
     private String Bio;
     private String Image;
+
+    private int elo;
 
     private ArrayList<Card> deck; //nur max 4
     private ArrayList<Card> stack;
@@ -20,14 +23,23 @@ public class User {
         this.stack = new ArrayList<>();
     }
 
-    public User(String username, String password,String token, int coin) {
+    public User (String username, String password,String token, int coin) {
+        this.Password = password;
+        this.Username = username;
+        this.token = token;
+        this.coin = coin;
+    }
+    public User(String username, String password,String token, int coin, String bio, String image, String name, int elo) {
         this.Password = password;
         this.Username = username;
         this.token = token;
         this.coin = coin;
         this.stack = new ArrayList<>();
+        this.Bio = bio;
+        this.Image = image;
+        this.Name = name;
+        this.elo = elo;
     }
-
     public String getUsername() {
         return Username;
     }
@@ -78,6 +90,22 @@ public class User {
         this.Image = image;
     }
 
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getElo() {
+        return elo;
+    }
+
+    public void setElo(int elo) {
+        this.elo = elo;
+    }
+
     public void showDeck(User user) {
         System.out.println("-----------------------------");
         System.out.println("All Cards in the Deck:");
@@ -93,9 +121,5 @@ public class User {
 
             }
         }
-    }
-
-    public void configureDeck(User user) {
-        //4 strongest cards should be used
     }
 }

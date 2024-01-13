@@ -67,6 +67,9 @@ public class PackagePostHandler implements Handler {
     }
 
     public void setTypeAndElement(Card card) {
+        Random random = new Random();
+        int elementNum = random.nextInt(3);
+
         //CARDTYPE
         if(card.getName().endsWith("Spell")) {
             card.setCardType(CardType.SPELL);
@@ -83,10 +86,21 @@ public class PackagePostHandler implements Handler {
             //ELEMENTTYPE
             if(card.getName().startsWith("Water")) {
                 card.setElementType(ElementType.WATER);
-            } else if (card.getName().startsWith("Dragon")) {
+            } else if (card.getName().startsWith("Fire")) {
                 card.setElementType(ElementType.FIRE);
-            } else if (card.getName().startsWith("Ork")) {
-                card.setElementType(ElementType.NORMAL);
+            } else {
+                switch (elementNum)
+                {
+                    case 0:
+                        card.setElementType(ElementType.NORMAL);
+                        break;
+                    case 1:
+                        card.setElementType(ElementType.FIRE);
+                        break;
+                    case 2:
+                        card.setElementType(ElementType.WATER);
+                        break;
+                }
             }
 
 

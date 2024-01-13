@@ -32,11 +32,12 @@ public class DeckPutHandler implements Handler {
                     User user = userRepository.getUserWithToken(request.getAuthorization());
                     objectMapper = new ObjectMapper();
                     objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-                    String body = objectMapper.readValue(request.getBody(), String.class);
-                    String[] idSplit = body.split(", ");
-                    if(idSplit.length == 4) {
+                    //changed from string to an string array so no splitting required ig??
+                    //look at it again
+                    String[] body = objectMapper.readValue(request.getBody(), String[].class);
+                    if(body.length == 4) {
                         ArrayList<Card> deck = new ArrayList<>();
-                        for (String id : idSplit) {
+                        for (String id : body) {
                             Card card = cardRepository.configDeck(user.getUsername(), id);
                             deck.add(card);
                         }

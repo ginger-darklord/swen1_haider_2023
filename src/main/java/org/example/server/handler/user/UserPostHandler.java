@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.application.models.User;
 import org.example.application.repository.UserRepository;
+import org.example.application.service.LoginService;
 import org.example.server.handler.Handler;
 import org.example.server.util.Request;
 import org.example.server.util.Response;
@@ -17,6 +18,7 @@ public class UserPostHandler implements Handler {
 
     private UserRepository userRepository;
     private  ObjectMapper objectMapper;
+    private LoginService loginService;
     public UserPostHandler() {}
 
     //only using it for the testing class
@@ -40,7 +42,8 @@ public class UserPostHandler implements Handler {
                     user.setToken("Authorization: Bearer " + user.getUsername() + "-mtcgToken");
 
                     userRepository = new UserRepository();
-                    if(userRepository.userExist(user) == false) {
+                    loginService = new LoginService();
+                    if(loginService.userExist(user) == false) {
                         userRepository.createUser(user);
                         response.setStatusCode(StatusCode.CREATED);
                     } else {

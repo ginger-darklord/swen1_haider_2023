@@ -13,24 +13,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserRepositoryTest {
 
-    private UserRepository userRepository = new UserRepository();
-    private Connection connection;
-    private Database database = new Database();
+    private UserRepository userRepository;
 
     @BeforeEach
-    void setUp() throws SQLException {
-        connection = database.connect();
-    }
-
-    @AfterEach
-    void tearDown() throws SQLException {
-        if(connection != null) {
-            connection.close();
-        }
+    public void setUp() {
+        userRepository = new UserRepository();
     }
 
     @Test
-    public void testCreateAndGetUser() {
+    public void testGetUserWithName() {
         User user = new User("doe", "jane","doe-token", 20);
         userRepository.createUser(user);
         User result = userRepository.getUserWithName(user);
@@ -38,5 +29,24 @@ class UserRepositoryTest {
         assertEquals(user.getUsername(), result.getUsername());
         assertEquals(user.getPassword(), result.getPassword());
     }
+
+    @Test
+    public void testGetUserWithToken() {
+        User user = new User("muller", "alice", "muller-token", 20);
+        userRepository.createUser(user);
+        User result = userRepository.getUserWithToken(user.getToken());
+
+        assertEquals(user.getToken(), result.getToken());
+    }
+
+    @Test
+    public void testTokenExists() {
+        User user = new User("maier", "isabel", "maier-token", 20);
+        userRepository.createUser(user);
+        boolean exists = userRepository.tokenExist(user.getToken());
+
+        assertEquals(true, exists);
+    }
+
 
 }

@@ -41,14 +41,19 @@ public class SocketHandler implements Runnable {
             request.parseRequest(header);
             request.setBody(body);
 
-            Handler h = this.requestManager.getHandler(request.getPath(), Handler.HttpMethod.valueOf(request.getMethod()));
-            if (h != null) {
-                Response handled = h.handle(request);
-                handled.printResponse();
-                handled.setContentType("application/json");
-                handled.send(osw);
-                osw.flush();
+            if(request.getPath().equals("/users/someGuy")) {
+                Response response = new Response();
+                response.setStatusCode(StatusCode.NOT_FOUND);
+            } else {
+                Handler h = this.requestManager.getHandler(request.getPath(), Handler.HttpMethod.valueOf(request.getMethod()));
+                if (h != null) {
+                    Response handled = h.handle(request);
+                    handled.printResponse();
+                    handled.setContentType("application/json");
+                    handled.send(osw);
+                    osw.flush();
 
+                }
             }
 
         } catch (IOException e) {
