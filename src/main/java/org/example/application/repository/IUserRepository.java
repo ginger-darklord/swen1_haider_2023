@@ -12,5 +12,5 @@ public interface IUserRepository {
     public void updateUser(User user, String username);
     public void buyWithCoin(int numberOfCoin, User user);
     public ArrayList<Integer> getScoreboard();
-    public void battleReady(User user, boolean ready);
+    public void updateElo(User user);
 }

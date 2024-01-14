@@ -22,7 +22,7 @@ class UserRepositoryTest {
 
     @Test
     public void testGetUserWithName() {
-        User user = new User("doe", "jane","doe-token", 20);
+        User user = new User("doe", "jane","Authorization: Bearer doe-mtcgToken", 20);
         userRepository.createUser(user);
         User result = userRepository.getUserWithName(user);
 
@@ -32,7 +32,7 @@ class UserRepositoryTest {
 
     @Test
     public void testGetUserWithToken() {
-        User user = new User("muller", "alice", "muller-token", 20);
+        User user = new User("muller", "alice", "Authorization: Bearer muller-mtcgToken", 20);
         userRepository.createUser(user);
         User result = userRepository.getUserWithToken(user.getToken());
 
@@ -41,7 +41,7 @@ class UserRepositoryTest {
 
     @Test
     public void testTokenExists() {
-        User user = new User("maier", "isabel", "maier-token", 20);
+        User user = new User("maier", "isabel", "Authorization: Bearer maier-mtcgToken", 20);
         userRepository.createUser(user);
         boolean exists = userRepository.tokenExist(user.getToken());
 

@@ -4,34 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="aquire packages works,&#10;money is now in db and and works too,&#10;tests still have to be upgraded&#10;started on showing deck and &#10;configuring it">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/battle/BattlePostHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/scoreboard/ScoreboardGetHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/stats/StatsGetHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPutHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/session/SessionPostHandlerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPostHandlerTest.java" afterDir="false" />
+    <list default="true" id="31929924-b915-44d8-98ce-b2f12a37b208" name="Changes" comment="too many changes idk&#10;sends response to curl&#10;can create and login user&#10;can save packages in database&#10;working und aquire packages&#10;tests have to be rewritten">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/Battle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleQueuer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/card/CardGetHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/deck/DeckGetHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserGetHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/server/handler/user/UserPutHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/CardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/ICardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/IUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/application/service/BattleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/application/service/StoreService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/SocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/battle/BattlePostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/battle/BattlePostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/card/CardGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/card/CardGetHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/card/CardPutHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckGetHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckPutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckPutHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/scoreboard/ScoreboardGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/scoreboard/ScoreboardGetHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserGetHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/handler/user/UserPostHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/models/CardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/models/CardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/models/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/models/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/CardRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/repository/UserRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/application/service/LoginServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/server/util/ResponseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/server/util/ResponseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +113,8 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+    ],
     &quot;DatabaseDriversLRU&quot;: [
       &quot;postgresql&quot;
     ]
@@ -126,14 +128,14 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="org.example.server.handler.session" />
+      <recent name="org.example.server.handler.deck" />
+      <recent name="org.example.server.handler.card" />
       <recent name="org.example.server.handler.user" />
+      <recent name="org.example.server.handler.session" />
       <recent name="org.example.application.service" />
-      <recent name="org.example.application.repository" />
-      <recent name="org.example.application.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ResponseTest">
+  <component name="RunManager" selected="JUnit.CardGetHandlerTest">
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="swen1_haider_2023" />
@@ -141,78 +143,76 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CardGetHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swen1_haider_2023" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.application.service.*" />
+          <option name="PATTERN" value="org.example.server.handler.card.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example.application.service" />
-      <option name="MAIN_CLASS_NAME" value="org.example.application.service.LoginServiceTest" />
+      <option name="PACKAGE_NAME" value="org.example.server.handler.card" />
+      <option name="MAIN_CLASS_NAME" value="org.example.server.handler.card.CardGetHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginServiceTest.testFailedUserLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeckGetHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swen1_haider_2023" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.application.service.*" />
+          <option name="PATTERN" value="org.example.server.handler.deck.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example.application.service" />
-      <option name="MAIN_CLASS_NAME" value="org.example.application.service.LoginServiceTest" />
-      <option name="METHOD_NAME" value="testFailedUserLogin" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginServiceTest.testUserTokenLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="swen1_haider_2023" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.application.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.application.service" />
-      <option name="MAIN_CLASS_NAME" value="org.example.application.service.LoginServiceTest" />
-      <option name="METHOD_NAME" value="testUserTokenLogin" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RequestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="swen1_haider_2023" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.server.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.server.util" />
-      <option name="MAIN_CLASS_NAME" value="org.example.server.util.RequestTest" />
+      <option name="PACKAGE_NAME" value="org.example.server.handler.deck" />
+      <option name="MAIN_CLASS_NAME" value="org.example.server.handler.deck.DeckGetHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ResponseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SessionPostHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swen1_haider_2023" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.server.util.*" />
+          <option name="PATTERN" value="org.example.server.handler.session.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example.server.util" />
-      <option name="MAIN_CLASS_NAME" value="org.example.server.util.ResponseTest" />
+      <option name="PACKAGE_NAME" value="org.example.server.handler.session" />
+      <option name="MAIN_CLASS_NAME" value="org.example.server.handler.session.SessionPostHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserGetHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swen1_haider_2023" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.server.handler.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.server.handler.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.server.handler.user.UserGetHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserPostHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swen1_haider_2023" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.server.handler.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.server.handler.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.server.handler.user.UserPostHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -220,11 +220,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ResponseTest" />
-        <item itemvalue="JUnit.RequestTest" />
-        <item itemvalue="JUnit.LoginServiceTest" />
-        <item itemvalue="JUnit.LoginServiceTest.testUserTokenLogin" />
-        <item itemvalue="JUnit.LoginServiceTest.testFailedUserLogin" />
+        <item itemvalue="JUnit.CardGetHandlerTest" />
+        <item itemvalue="JUnit.DeckGetHandlerTest" />
+        <item itemvalue="JUnit.SessionPostHandlerTest" />
+        <item itemvalue="JUnit.UserGetHandlerTest" />
+        <item itemvalue="JUnit.UserPostHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -293,6 +293,7 @@
       <workItem from="1704559608116" duration="2532000" />
       <workItem from="1705053173425" duration="4326000" />
       <workItem from="1705157181859" duration="6002000" />
+      <workItem from="1705224054781" duration="27032000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1694445381192</created>
@@ -395,27 +396,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/laptop" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -437,6 +417,27 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/laptop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -464,19 +465,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckPutHandler.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/transaction/TransactionPostHandler.java</url>
           <line>51</line>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/packages/PackagePostHandler.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckGetHandler.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/handler/deck/DeckPutHandler.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

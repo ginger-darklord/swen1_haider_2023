@@ -160,13 +160,13 @@ public class UserRepository implements IUserRepository {
     public ArrayList<Integer> getScoreboard() {
         try {
             connection = database.connect();
-            String query = "SELECT elo FROM person;";
+            String query = "SELECT elo FROM person ORDER BY elo DESC;";
             ArrayList<Integer> eloValues = new ArrayList<>();
 
             preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                eloValues.add(resultSet.getInt(9));
+                eloValues.add(resultSet.getInt(1));
             }
             return eloValues;
         } catch (SQLException e) {
@@ -177,19 +177,17 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public void battleReady(User user, boolean ready) {
+    public void updateElo(User user) {
         try {
             connection = database.connect();
-            String query = "INSERT INTO battle(username, ready) VALUES (?,?);";
+            String query = "UPDATE person set elo = ? WHERE username = ?";
 
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setBoolean(2, ready);
+            preparedStatement.setInt(1, user.getElo());
+            preparedStatement.setString(2, user.getUsername());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            this.closeConnection();
         }
     }
 

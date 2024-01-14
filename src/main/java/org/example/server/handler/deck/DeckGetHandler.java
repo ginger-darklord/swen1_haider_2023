@@ -26,28 +26,22 @@ public class DeckGetHandler implements Handler {
         Response response = new Response();
         if(request.getMethod().equals("GET")) {
             userRepository = new UserRepository();
-            if(request.getContentType().startsWith("Content-Type: application/json")) {
-                if(userRepository.tokenExist(request.getAuthorization())) {
-                    objectMapper = new ObjectMapper();
-                    objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-                    objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+            if(userRepository.tokenExist(request.getAuthorization())) {
+                objectMapper = new ObjectMapper();
+                objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+                objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-                    User user = userRepository.getUserWithToken(request.getAuthorization());
-                    cardRepository = new CardRepository();
-                    ArrayList<Card> deck = cardRepository.unconfigDeck(user.getUsername());
-                    for(Card deckPart : deck) {
-                        cardRepository.addToDeck(deckPart, user);
-                    }
+                User user = userRepository.getUserWithToken(request.getAuthorization());
+                cardRepository = new CardRepository();
+                ArrayList<Card> deck = cardRepository.unconfigDeck(user.getUsername());
 
-                    String body = objectMapper.writeValueAsString(deck);
-                    response.setBody(body);
-                    response.countMessageLength(response);
-                    response.setStatusCode(StatusCode.OK);
-                } else {
-                    response.setStatusCode(StatusCode.BAD_REQUEST);
-                }
+                String body = objectMapper.writeValueAsString(deck);
+                response.setBody(body);
+                response.countMessageLength(response);
+                response.setStatusCode(StatusCode.OK);
+            } else {
+                response.setStatusCode(StatusCode.BAD_REQUEST);
             }
-
         } else {
             response.setStatusCode(StatusCode.METHOD_NOT_ALLOWED);
         }

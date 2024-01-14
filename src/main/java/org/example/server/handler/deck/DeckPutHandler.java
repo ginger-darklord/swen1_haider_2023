@@ -32,20 +32,24 @@ public class DeckPutHandler implements Handler {
                     User user = userRepository.getUserWithToken(request.getAuthorization());
                     objectMapper = new ObjectMapper();
                     objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-                    //changed from string to an string array so no splitting required ig??
-                    //look at it again
                     String[] body = objectMapper.readValue(request.getBody(), String[].class);
                     if(body.length == 4) {
                         ArrayList<Card> deck = new ArrayList<>();
-                        for (String id : body) {
-                            Card card = cardRepository.configDeck(user.getUsername(), id);
-                            deck.add(card);
+                        if(cardRepository.deckFull(user.getUsername())) {
+                            response.setStatusCode(StatusCode.BAD_REQUEST);
+                        } else {
+                            //saving configured deck in db
+                            for (String id : body) {
+                                Card card = cardRepository.configDeck(user.getUsername(), id);
+                                deck.add(card);
+                                cardRepository.addToDeck(card, user);
+                            }
+                            String responseBody = objectMapper.writeValueAsString(deck);
+                            response.setBody(responseBody);
+                            response.countMessageLength(response);
+                            response.setStatusCode(StatusCode.OK);
                         }
 
-                        String responseBody = objectMapper.writeValueAsString(deck);
-                        response.setBody(responseBody);
-                        response.countMessageLength(response);
-                        response.setStatusCode(StatusCode.OK);
                     } else {
                         System.out.println("Not enough card ids for a deck, has to be 4");
                         response.setStatusCode(StatusCode.BAD_REQUEST);

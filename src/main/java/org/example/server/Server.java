@@ -3,7 +3,6 @@ package org.example.server;
 import org.example.server.handler.*;
 import org.example.server.handler.battle.BattlePostHandler;
 import org.example.server.handler.card.CardGetHandler;
-import org.example.server.handler.card.CardPutHandler;
 import org.example.server.handler.deck.DeckGetHandler;
 import org.example.server.handler.deck.DeckPutHandler;
 import org.example.server.handler.packages.PackagePostHandler;
@@ -35,13 +34,14 @@ public class Server {
         requestManager.on("/users", Handler.HttpMethod.POST, new UserPostHandler());
         requestManager.on("/users/kienboec", Handler.HttpMethod.GET, new UserGetHandler());
         requestManager.on("/users/altenhof", Handler.HttpMethod.GET, new UserGetHandler());
+        requestManager.on("/users/someGuy", Handler.HttpMethod.GET, new UserGetHandler());
         requestManager.on("/users/kienboec", Handler.HttpMethod.PUT, new UserPutHandler());
         requestManager.on("/users/altenhof", Handler.HttpMethod.PUT, new UserPutHandler());
         requestManager.on("/sessions", Handler.HttpMethod.POST, new SessionPostHandler());
         requestManager.on("/packages", Handler.HttpMethod.POST, new PackagePostHandler());
         requestManager.on("/cards", Handler.HttpMethod.GET, new CardGetHandler());
-        requestManager.on("/cards", Handler.HttpMethod.PUT, new CardPutHandler());
         requestManager.on("/deck", Handler.HttpMethod.GET, new DeckGetHandler());
+        requestManager.on("/deck?format=plain", Handler.HttpMethod.GET, new DeckGetHandler());
         requestManager.on("/deck", Handler.HttpMethod.PUT, new DeckPutHandler());
         requestManager.on("/tradings", Handler.HttpMethod.DELETE, new TradingDeleteHandler());
         requestManager.on("/tradings", Handler.HttpMethod.GET, new TradingGetHandler());
@@ -50,7 +50,6 @@ public class Server {
         requestManager.on("/stats", Handler.HttpMethod.GET, new StatsGetHandler());
         requestManager.on("/scoreboard", Handler.HttpMethod.GET, new ScoreboardGetHandler());
         requestManager.on("/battles", Handler.HttpMethod.POST, new BattlePostHandler());
-
     }
 
 

@@ -5,7 +5,7 @@ import org.example.application.ElementType;
 
 public class Card {
     private String Id;
-    private String Damage;
+    private int Damage;
     private String Name;
     private String element;
     private String type;
@@ -14,7 +14,7 @@ public class Card {
     public Card() {}
 
     //for tests
-    public Card(String id, String name, String damage, String type, String element, String username) {
+    public Card(String id, String name, int damage, String type, String element, String username) {
         this.Id = id;
         this.Name = name;
         this.Damage = damage;
@@ -23,7 +23,7 @@ public class Card {
         this.username = username;
     }
 
-    public Card(String id, String name, String damage, String type, String element) {
+    public Card(String id, String name, int damage, String type, String element) {
         this.Id = id;
         this.Name = name;
         this.Damage = damage;
@@ -31,11 +31,11 @@ public class Card {
         this.element = element;
     }
 
-    public String getDamage() {
+    public int getDamage() {
         return Damage;
     }
 
-    public void setDamage(String damage) {
+    public void setDamage(int damage) {
         Damage = damage;
     }
 

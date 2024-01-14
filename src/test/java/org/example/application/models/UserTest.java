@@ -12,10 +12,10 @@ class UserTest {
 
         user.setUsername("lena");
         user.setPassword("maier");
-        String username = user.getUsername();
-        String password = user.getPassword();
+        user.setToken("Authorization: Bearer maier-mtcgToken");
 
-        assertEquals("lena", username);
-        assertEquals("maier", password);
+        assertEquals("lena", user.getUsername());
+        assertEquals("maier", user.getPassword());
+        assertEquals("Authorization: Bearer maier-mtcgToken", user.getToken());
     }
 }

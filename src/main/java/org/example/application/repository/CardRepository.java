@@ -26,7 +26,7 @@ public class CardRepository implements ICardRepository{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, card.getId());
             preparedStatement.setString(2, card.getName());
-            preparedStatement.setString(3, card.getDamage());
+            preparedStatement.setInt(3, card.getDamage());
             preparedStatement.setString(4, card.getType());
             preparedStatement.setString(5, card.getElement());
 
@@ -77,7 +77,7 @@ public class CardRepository implements ICardRepository{
                 result = new Card(
                         resultSet.getString(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
+                        resultSet.getInt(3),
                         resultSet.getString(4),
                         resultSet.getString(5)
                 );
@@ -126,7 +126,7 @@ public class CardRepository implements ICardRepository{
                 result = new Card(
                         resultSet.getString(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
+                        resultSet.getInt(3),
                         resultSet.getString(4),
                         resultSet.getString(5)
                 );
@@ -153,7 +153,7 @@ public class CardRepository implements ICardRepository{
                 result = new Card(
                         resultSet.getString(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
+                        resultSet.getInt(3),
                         resultSet.getString(4),
                         resultSet.getString(5)
                 );
@@ -181,7 +181,7 @@ public class CardRepository implements ICardRepository{
                 result = new Card(
                         resultSet.getString(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
+                        resultSet.getInt(3),
                         resultSet.getString(4),
                         resultSet.getString(5)
                 );
@@ -191,6 +191,30 @@ public class CardRepository implements ICardRepository{
             throw new RuntimeException(e);
         } finally {
             this.closeConnection();
+        }
+    }
+
+    @Override
+    public boolean deckFull(String username) {
+        int count = 0;
+        try {
+            connection = database.connect();
+            String query = "SELECT COUNT(*) FROM deck WHERE username = ?;";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+
+            if (count >= 4) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -208,7 +232,7 @@ public class CardRepository implements ICardRepository{
                 result = new Card(
                         resultSet.getString(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
+                        resultSet.getInt(3),
                         resultSet.getString(4),
                         resultSet.getString(5)
                 );
@@ -229,7 +253,7 @@ public class CardRepository implements ICardRepository{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, card.getId());
             preparedStatement.setString(2, card.getName());
-            preparedStatement.setString(3, card.getDamage());
+            preparedStatement.setInt(3, card.getDamage());
             preparedStatement.setString(4, card.getType());
             preparedStatement.setString(5, card.getElement());
             preparedStatement.setString(6, user.getUsername());
@@ -241,6 +265,46 @@ public class CardRepository implements ICardRepository{
             this.closeConnection();
         }
 
+    }
+
+    public ArrayList<Card> getDeck(String username) {
+        ArrayList<Card> deck = new ArrayList<>();
+        try {
+            connection = database.connect();
+            String query = "SELECT * FROM deck WHERE username = ? LIMIT 4;";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Card card = new Card(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getInt(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6)
+                );
+                deck.add(card);
+            }
+            return deck;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void changeUser(String username, String cardId) {
+        try {
+            connection = database.connect();
+            String query = "UPDATE deck set username = ? WHERE card_id = ?";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, cardId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void closeConnection() {

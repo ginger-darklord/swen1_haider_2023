@@ -36,10 +36,10 @@ public class CardGetHandler implements Handler {
 
                 cardRepository = new CardRepository();
                 User user = userRepository.getUserWithToken(request.getAuthorization());
-                ArrayList<Card> userCards = cardRepository.getStack(user.getUsername());
-                this.showCards(userCards);
+                ArrayList<Card> stack = cardRepository.getStack(user.getUsername());
+                this.showCards(stack);
 
-                String body = objectMapper.writeValueAsString(userCards);
+                String body = objectMapper.writeValueAsString(stack);
                 response.setBody(body);
                 response.countMessageLength(response);
                 response.setStatusCode(StatusCode.OK);
@@ -53,9 +53,9 @@ public class CardGetHandler implements Handler {
         return response;
     }
 
-    public void showCards(ArrayList<Card> userCards) {
-        System.out.println("Amount of cards: " + userCards.size());
-        for (Card part : userCards) {
+    public void showCards(ArrayList<Card> stack) {
+        System.out.println("Amount of cards: " + stack.size());
+        for (Card part : stack) {
             System.out.println("----------------------------------------");
             System.out.println("Id: " + part.getId());
             System.out.println("Name: " + part.getName());
